@@ -1,5 +1,4 @@
 <resources>
     <string name="app_name">Hazard</string>
-    <string name="auth_failed">Registration failed please try again later *_* </string>
-
+    <string name="auth_failed">Authentication failed.</string>
 </resources>
