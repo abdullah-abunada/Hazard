@@ -1,5 +1,6 @@
 package ps.source.hazard.hazard;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +20,7 @@ public class SignUpActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     TextView email_tv, password_tv, password_confirmation_tv;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,8 @@ public class SignUpActivity extends AppCompatActivity {
         email_tv = (TextView) findViewById(R.id.email);
         password_tv = (TextView) findViewById(R.id.password);
         password_confirmation_tv = (TextView) findViewById(R.id.password_confirmation);
+
+        progressDialog = new ProgressDialog(this);
     }
 
     public void signUp(View view) {
@@ -45,16 +49,26 @@ public class SignUpActivity extends AppCompatActivity {
             Toast.makeText(SignUpActivity.this, "Please Enter Password",
                     Toast.LENGTH_LONG).show();
         } else if (password.equals(password_confirmation)) {
+
+            progressDialog.setMessage("Registering Please Wait...");
+            progressDialog.show();
+
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
 
                             if (!task.isSuccessful()) {
+
                                 Toast.makeText(SignUpActivity.this, R.string.auth_failed,
                                         Toast.LENGTH_SHORT).show();
+
+                                progressDialog.dismiss();
+
                             } else {
 
+                                progressDialog.dismiss();
+                                
                                 Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
                                 startActivity(intent);
                             }
