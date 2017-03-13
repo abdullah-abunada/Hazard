@@ -43,7 +43,8 @@ public class SignInActivity extends AppCompatActivity {
             Toast.makeText(SignInActivity.this, "Please Enter Password",
                     Toast.LENGTH_LONG).show();
         } else {
-            mAuth.createUserWithEmailAndPassword(email, password)
+
+            mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
