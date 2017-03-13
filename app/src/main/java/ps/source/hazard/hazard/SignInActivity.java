@@ -67,4 +67,23 @@ public class SignInActivity extends AppCompatActivity {
         Intent intent = new Intent(SignInActivity.this, SignUpActivity.class);
         startActivity(intent);
     }
+
+    public void resetPassword(View view){
+
+        String email = email_tv.getText().toString();
+        if (email.isEmpty()) {
+            Toast.makeText(SignInActivity.this, "Please Enter Your Email Address",
+                    Toast.LENGTH_LONG).show();
+        }else{
+
+            mAuth.sendPasswordResetEmail(email).addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+
+                    Toast.makeText(SignInActivity.this, "New Password has been sent to your Email",
+                            Toast.LENGTH_LONG).show();
+                }
+            });
+        }
+    }
 }

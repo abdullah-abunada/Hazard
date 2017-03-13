@@ -26,34 +26,49 @@
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/email"
-            android:layout_alignRight="@+id/email"
             android:layout_below="@+id/email"
             android:layout_marginTop="28dp"
             android:ems="10"
             android:hint="Enter password"
             android:inputType="textPassword" />
-
-        <Button
-            android:id="@+id/signIn"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:id="@+id/actionButtons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="signIn"
+            android:weightSum="5"
             android:layout_marginTop="28dp"
             android:layout_below="@+id/password"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:onClick="signIn"/>
+            android:layout_alignParentStart="true">
+
+            <Button
+                android:id="@+id/signUp"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:text="signUp"
+                android:onClick="signUp"/>
+
+            <Button
+                android:id="@+id/signIn"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="wrap_content"
+                android:text="signIn"
+                android:onClick="signIn"/>
+
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_below="@+id/signIn"
+            android:id="@+id/forgetPassword"
+            android:layout_below="@+id/actionButtons"
             android:layout_marginTop="28dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:onClick="signUp"
-            android:text="SIGN UP FOR NEW ACCOUNT" />
+            android:onClick="resetPassword"
+            android:text="Forgot Your password?" />
 
 
     </RelativeLayout>
