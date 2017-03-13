@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Hazard</string>
     <string name="auth_failed">Authentication failed.</string>
+    <string name="text_profile">Profile</string>
+    <string name="text_groups">Groups</string>
+    <string name="text_feeds">Hot Feeds</string>
+    <string name="text_map">Map</string>
 </resources>
