@@ -3,7 +3,8 @@ package ps.source.hazard.hazard;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.ActionBar;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -12,6 +13,8 @@ import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import ps.source.hazard.hazard.profile.ProfileActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,6 +37,11 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         initBottomNavigationView();
 
+        /*
+        ProfileFragment profileFragment = new ProfileFragment();
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.fragment_container, profileFragment).commit();
+        */
     }
 
     @Override
@@ -56,10 +64,15 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()) {
-                            case R.id.action_profile:
-                                break;
 
                             case R.id.action_groups:
+                                /*
+                                ProfileFragment profileFragment = new ProfileFragment();
+                                FragmentManager fragmentManager = getSupportFragmentManager();
+                                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                                transaction.replace(R.id.fragment_container, profileFragment);
+                                transaction.commit();
+                                */
                                 break;
 
                             case R.id.action_feeds:
@@ -102,7 +115,9 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings:
-                // User chose the "Settings" item, show the app settings UI...
+
+                Intent intent = new Intent(this, ProfileActivity.class);
+                startActivity(intent);
                 return true;
 
             case R.id.action_sign_out:
